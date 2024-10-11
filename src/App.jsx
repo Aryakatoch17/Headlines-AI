@@ -9,14 +9,15 @@ function App() {
   const [prompt, setPrompt] = useState('');
   const [content, setContent] = useState('Loading...');
   const [loading, setLoading] = useState(false);
-
+  console.log(import.meta.env.VITE_API_KEY);
+ const apiKey=import.meta.env.VITE_API_KEY;
   const handleGenerateContent = async () => {
     setLoading(true);
     setContent('Loading...');
 
     try {
       const response = await axios.post(
-        'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyBBK3rlbAEFlcxYYaAvXRyzHal1s9SuyOE', // Replace with your API key
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`, // Replace with your API key
         {
           contents: [
             {
